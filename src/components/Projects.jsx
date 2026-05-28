@@ -7,46 +7,62 @@ const myProjects = [
     title: "Essence creations e-commerce website",
     description: "A fast, responsive shopping application featuring clean state management and search filtering.",
     tags: ["React", "CSS Grid"],
-    videoUrl: "", // Left blank intentionally for your direct GitHub Asset upload later!
-    githubLink: "https://github.com/nwadikeekene4-lab/my-portfolio-website"
+    videoUrl: "https://raw.githubusercontent.com/nwadikeekene4-lab/New-project-1/main/public/videos/video1.mp4",
+    githubLink: "https://github.com/nwadikeekene4-lab/New-project-1"
   }
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="container">
-      <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem' }}>Featured Projects</h2>
-      <div className="projects-grid">
-        {myProjects.map((project) => (
-          <div key={project.id} className="project-card">
-            
-            {/* Standard HTML5 Mobile-Friendly Video Player */}
-            <div className="video-container" style={{ backgroundColor: '#000' }}>
-              <video 
-                src={project.videoUrl} 
-                controls 
-                playsInline 
-                preload="metadata"
-                width="100%" 
-                style={{ display: 'block', aspectRatio: '16/9', objectFit: 'cover', borderBottom: '1px solid #334155' }}
-              >
-                Your browser does not support the video tag.
-              </video>
-            </div>
-
-            <div className="project-info">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="tags">
-                {project.tags.map((tag, index) => <span key={index}>{tag}</span>)}
+    <section id="projects" className="portfolio-section">
+      <div className="section-container">
+        
+        <header className="section-header">
+          <h2>Featured Projects</h2>
+        </header>
+        
+        <div className="projects-grid">
+          {myProjects.map((project) => (
+            <article key={project.id} className="project-card">
+              
+              <div className="video-wrapper">
+                <video 
+                  src={project.videoUrl} 
+                  controls 
+                  playsInline 
+                  preload="metadata"
+                  className="project-video"
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
-              <div className="project-links">
-                <a href={project.githubLink} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>GitHub</a>
-              </div>
-            </div>
 
-          </div>
-        ))}
+              <div className="project-info">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                
+                <div className="tags">
+                  {project.tags.map((tag, index) => (
+                    <span key={index} className="tag-badge">{tag}</span>
+                  ))}
+                </div>
+                
+                <div className="project-links">
+                  <a 
+                    href={project.githubLink} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="btn-github"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+
+            </article>
+          ))}
+        </div>
+
       </div>
     </section>
   );
