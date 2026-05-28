@@ -1,5 +1,5 @@
 import React from 'react';
-import portfolioVideo from './public/videos/your-video-file-name.mp4';
+import portfolioVideo from './public/videos/video 1 portfolio.mp4';
 import './Projects.css';
 
 const myProjects = [
@@ -8,7 +8,7 @@ const myProjects = [
     title: "Essence creations e-commerce website",
     description: "A fast, responsive shopping application featuring clean state management and search filtering.",
     tags: ["React", "CSS Grid"],
-    videoUrl: "https://raw.githubusercontent.com/nwadikeekene4-lab/New-project-1/main/public/videos/video1.mp4",
+    videoUrl: "public/videos/video 1 portfolio.mp4",
     githubLink: "https://github.com/nwadikeekene4-lab/New-project-1"
   }
 ];
