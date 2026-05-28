@@ -2,7 +2,7 @@ name: Deploy Vite Site
 
 on:
   push:
-    branches: ["main"] # Change to "master" if your default branch is master
+    branches: ["main"] # Change to "master" if your branch is named master
 
 permissions:
   contents: read
@@ -18,19 +18,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - name: Install dependencies
-        run: npm install
+
+      # This is the fix! It tells npm to install EVERYTHING including Vite
+      - name: Install All Dependencies
+        run: npm install --include=dev
+
       - name: Build site
         run: npm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Vite puts the compiled index.html here
+          path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
