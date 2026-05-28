@@ -5,7 +5,7 @@ on:
     branches: ["main"] # Change to "master" if your branch is named master
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -16,22 +16,28 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # This is the fix! It tells npm to install EVERYTHING including Vite
+      # Fix 1: Force node to clean its cache and allow all dev tools
       - name: Install All Dependencies
-        run: npm install --include=dev
+        run: |
+          npm ci --include=dev || npm install --include=dev
 
-      - name: Build site
-        run: npm run build
+      # Fix 2: Run the build command directly through npx to bypass shell issues
+      - name: Build React Site
+        run: npx vite build
 
-      - name: Upload artifact
+      # Fix 3: List files so we can verify the 'dist' folder exists
+      - name: Verify Build Folder
+        run: ls -la
+
+      - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
