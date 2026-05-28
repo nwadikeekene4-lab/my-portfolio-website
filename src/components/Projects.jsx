@@ -1,4 +1,5 @@
 import React from 'react';
+import portfolioVideo from './public/videos/your-video-file-name.mp4';
 import './Projects.css';
 
 const myProjects = [
