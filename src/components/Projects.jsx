@@ -8,7 +8,7 @@ const myProjects = [
     title: "Essence creations e-commerce website",
     description: "A fast, responsive shopping application featuring clean state management and search filtering.",
     tags: ["React", "CSS Grid"],
-    videoUrl: "public/videos/video 1 portfolio.mp4",
+    videoUrl: portfolioVideo, // <-- Changed from a text path to your imported variable!
     githubLink: "https://github.com/nwadikeekene4-lab/New-project-1"
   }
 ];
