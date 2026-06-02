@@ -7,7 +7,8 @@ const myProjects = [
     title: "Essence creations e-commerce website",
     description: "A fast, responsive shopping application featuring clean state management and search filtering.",
     tags: ["React", "CSS Grid"],
-    videoUrl: "https://raw.githubusercontent.com/nwadikeekene4-lab/New-project-1/main/public/videos/video1.mp4",
+    // FIXED: Swapped out the raw link for a direct public streaming path relative to your hosted repository
+    videoUrl: "./videos/video1.mp4",
     githubLink: "https://github.com/nwadikeekene4-lab/New-project-1"
   }
 ];
